@@ -1,0 +1,128 @@
+/* TOP — оформление окна топа (грузится с jsdelivr) */
+html, body { margin: 0; padding: 0; min-height: 100%; height: 100%; }
+html { background-color: #04060c; }
+body {
+	background: #04060c url(bg.jpg) no-repeat center center;
+	background-size: cover;
+	background-attachment: fixed;
+	color: #f2f2f7;
+	font: bold 13px Verdana, Tahoma, sans-serif;
+	overflow-x: hidden;
+}
+
+/* таблица узкая и по центру — по бокам видно девушку и маньяка */
+#a { position: relative; max-width: 600px; margin: 0 auto; padding: 8px 8px 10px; }
+
+/* туман */
+.fog {
+	position: fixed; left: -50%; width: 200%; height: 140px; bottom: -20px; z-index: 1; pointer-events: none;
+	background: radial-gradient(ellipse at center, rgba(170, 190, 230, 0.20), rgba(170, 190, 230, 0) 70%);
+	animation: fog 22s linear infinite;
+}
+.fog.f2 { bottom: 40px; opacity: .6; animation-duration: 34s; animation-direction: reverse; }
+@keyframes fog { 0% { transform: translateX(0); } 50% { transform: translateX(12%); } 100% { transform: translateX(0); } }
+
+/* светлячки */
+.ff {
+	position: fixed; z-index: 1; width: 4px; height: 4px; border-radius: 50%; pointer-events: none;
+	background: #ffe98a; box-shadow: 0 0 8px 3px rgba(255, 220, 90, .7);
+	animation: ff 6s ease-in-out infinite;
+}
+@keyframes ff {
+	0%, 100% { transform: translate(0, 0); opacity: .2; }
+	50% { transform: translate(18px, -24px); opacity: 1; }
+}
+
+.head { position: relative; z-index: 2; display: table; width: 100%; }
+.head > * { display: table-cell; vertical-align: middle; }
+.kn { width: 54px; animation: shake 3s ease-in-out infinite; }
+.mk { width: 54px; animation: pulse 2.6s ease-in-out infinite; }
+@keyframes shake { 0%, 100% { transform: rotate(0); } 10% { transform: rotate(-12deg); } 20% { transform: rotate(8deg); } 30% { transform: rotate(0); } }
+@keyframes pulse {
+	0%, 100% { filter: drop-shadow(0 0 4px rgba(255, 40, 60, .4)); }
+	50% { filter: drop-shadow(0 0 16px rgba(255, 40, 60, 1)); }
+}
+
+.ttl { text-align: center; }
+.ttl h1 {
+	margin: 0;
+	font: normal 32px Impact, 'Arial Black', sans-serif;
+	letter-spacing: 2px;
+	color: #ffe0ea;
+	text-shadow: 0 0 6px #ff2f5a, 0 0 18px #c4103a, 2px 2px 0 #000;
+	animation: flick 5s infinite;
+}
+@keyframes flick { 0%, 92%, 100% { opacity: 1; } 93% { opacity: .4; } 94% { opacity: 1; } 96% { opacity: .6; } }
+.sub { color: #e6e6f0; font-size: 12px; text-shadow: 0 1px 3px #000; }
+.sub b { color: #ff5a7e; }
+
+table {
+	position: relative; z-index: 2; width: 100%; margin-top: 4px;
+	border-collapse: separate; border-spacing: 0 2px; font-size: 12px;
+	text-shadow: 0 1px 2px #000;
+}
+th {
+	padding: 5px; background: rgba(160, 12, 40, 0.95); color: #fff;
+	font-size: 10px; text-transform: uppercase; letter-spacing: 1px;
+	border-bottom: 2px solid #ff4d6d;
+}
+td { padding: 3px 5px; background: rgba(4, 4, 12, 0.86); text-align: center; white-space: nowrap; }
+tr td:first-child { border-radius: 5px 0 0 5px; }
+tr td:last-child  { border-radius: 0 5px 5px 0; }
+td.nick, th.nick { text-align: left; max-width: 170px; overflow: hidden; text-overflow: ellipsis; }
+td.pos { width: 30px; color: #ff8aa2; }
+.cup { vertical-align: middle; }
+small { color: #b9a8c0; font-weight: normal; }
+
+tr.t1 td { background: rgba(110, 76, 6, 0.92); }
+tr.t2 td { background: rgba(70, 80, 104, 0.92); }
+tr.t3 td { background: rgba(100, 48, 20, 0.92); }
+tr.t1 td.nick { color: #ffd34d; }
+tr.t2 td.nick { color: #eef2fa; }
+tr.t3 td.nick { color: #f3a86c; }
+tr.me td { background: rgba(120, 0, 40, 0.92); box-shadow: inset 0 1px 0 #ff4d6d, inset 0 -1px 0 #ff4d6d; }
+
+.bar {
+	display: inline-block; width: 46px; height: 8px; margin-right: 5px; vertical-align: middle;
+	background: #120812; border: 1px solid #5a1a2e; border-radius: 4px; overflow: hidden;
+}
+.bar i {
+	display: block; height: 100%; background: #ff4d6d;
+	background: linear-gradient(90deg, #7a0a1e, #ff2f5a, #ffd34d);
+	background-size: 46px 100%;
+}
+.pc { display: inline-block; min-width: 30px; text-align: left; font-weight: normal; }
+
+.sk { display: inline-block; min-width: 20px; padding: 1px 4px; border-radius: 4px; font: bold 10px Verdana, sans-serif; color: #fff; }
+.sk.L { background: #5b5b6b; }
+.sk.M { background: #2f8f3a; }
+.sk.H { background: #d9731a; }
+.sk.P { background: #c4192c; }
+.sk.G { background: #8a2be2; box-shadow: 0 0 8px #b86bff; }
+.skn  { color: #ffd34d; }
+
+.foot {
+	position: relative; z-index: 2; margin-top: 6px; text-align: center;
+	color: #ffd0dc; font: 20px Impact, 'Arial Black', sans-serif; letter-spacing: 3px;
+	text-shadow: 0 0 10px #ff2f5a, 0 2px 3px #000;
+}
+
+
+/* ===== размеры привязаны к высоте окна (vh) — топ всегда влезает целиком,
+   даже при самом маленьком разрешении игры ===== */
+body { font-size: 2.3vh; }
+#a { max-width: 100vh; padding: 0.6vh 1vh; }
+.kn, .mk { width: 7vh; }
+.ttl h1 { font-size: 4.4vh; letter-spacing: 0.2vh; }
+.sub { font-size: 1.9vh; }
+table { font-size: 2.3vh; border-spacing: 0 0.25vh; margin-top: 0.4vh; }
+th { font-size: 1.8vh; padding: 0.5vh 0.6vh; letter-spacing: 0.1vh; }
+td { padding: 0.35vh 0.7vh; }
+td.pos { width: 4vh; }
+.cup { width: 2.8vh; height: 2.8vh; }
+.bar { width: 6vh; height: 1.1vh; margin-right: 0.6vh; }
+.bar i { background-size: 6vh 100%; }
+.pc { min-width: 4.5vh; }
+.sk { font-size: 1.7vh; min-width: 3vh; padding: 0.1vh 0.5vh; }
+td.nick, th.nick { max-width: 26vh; }
+.foot { font-size: 3vh; margin-top: 0.6vh; }
