@@ -32,7 +32,7 @@
 		'</div>';
 
 	html += '<table><tr><th>#</th><th class="nick">Ник</th><th>Фраги</th><th>Смерти</th>' +
-		'<th>В голову</th><th>Эфф.</th><th>Скилл</th></tr>';
+		'<th>HS</th><th>Эфф.</th><th>Скилл</th></tr>';
 
 	for (var i = 0; i < rows.length; i++) {
 		var p = rows[i].split('|');
