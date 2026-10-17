@@ -60,17 +60,28 @@
 	var box = document.getElementById('a');
 	box.innerHTML = html;
 
-	// подгоняем под размер окна игры, чтобы не было прокрутки
+	// подгоняем под размер окна игры (и по высоте, и по ширине), чтобы всё было видно без прокрутки
 	function fit() {
 		box.style.zoom = 1;
-		var need = box.scrollHeight + 4;
-		var have = window.innerHeight || document.documentElement.clientHeight;
-		if (need > have && have > 100) box.style.zoom = (have / need).toFixed(3);
+		var haveH = window.innerHeight || document.documentElement.clientHeight;
+		var haveW = window.innerWidth || document.documentElement.clientWidth;
+		var needH = box.scrollHeight + 4;
+		var needW = box.scrollWidth + 4;
+		var z = 1;
+		if (haveH > 50 && needH > haveH) z = Math.min(z, haveH / needH);
+		if (haveW > 50 && needW > haveW) z = Math.min(z, haveW / needW);
+		if (z < 0.35) z = 0.35;
+		if (z < 1) box.style.zoom = z.toFixed(3);
 	}
 	document.documentElement.style.overflow = 'hidden';
 	document.body.style.overflow = 'hidden';
+	// маленькое окно — компактный режим
+	var hh = window.innerHeight || document.documentElement.clientHeight;
+	if (hh && hh < 520) document.body.className += ' small';
 	fit();
 	window.onresize = fit;
+	setTimeout(fit, 300);
+	setTimeout(fit, 1200);
 	var imgs = box.getElementsByTagName('img');
 	for (var n = 0; n < imgs.length; n++) imgs[n].onload = fit;
 })();
