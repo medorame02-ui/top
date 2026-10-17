@@ -108,21 +108,20 @@ tr.me td { background: rgba(120, 0, 40, 0.92); box-shadow: inset 0 1px 0 #ff4d6d
 }
 
 
-/* ===== размеры привязаны к высоте окна (vh) — топ всегда влезает целиком,
-   даже при самом маленьком разрешении игры ===== */
-body { font-size: 2.3vh; }
-#a { max-width: 100vh; padding: 0.6vh 1vh; }
-.kn, .mk { width: 7vh; }
-.ttl h1 { font-size: 4.4vh; letter-spacing: 0.2vh; }
-.sub { font-size: 1.9vh; }
-table { font-size: 2.3vh; border-spacing: 0 0.25vh; margin-top: 0.4vh; }
-th { font-size: 1.8vh; padding: 0.5vh 0.6vh; letter-spacing: 0.1vh; }
-td { padding: 0.35vh 0.7vh; }
-td.pos { width: 4vh; }
-.cup { width: 2.8vh; height: 2.8vh; }
-.bar { width: 6vh; height: 1.1vh; margin-right: 0.6vh; }
-.bar i { background-size: 6vh 100%; }
-.pc { min-width: 4.5vh; }
-.sk { font-size: 1.7vh; min-width: 3vh; padding: 0.1vh 0.5vh; }
-td.nick, th.nick { max-width: 26vh; }
-.foot { font-size: 3vh; margin-top: 0.6vh; }
+/* ===== все размеры в em: скрипт сам подбирает размер шрифта под высоту окна ===== */
+body { font-size: 13px; }
+#a { max-width: 43.48em; padding: 0.26em 0.43em; }
+.kn, .mk { width: 3.04em; }
+.ttl h1 { font-size: 1.91em; letter-spacing: 0.09em; }
+.sub { font-size: 0.83em; }
+table { font-size: 1em; border-spacing: 0 0.11em; margin-top: 0.17em; }
+th { font-size: 0.78em; padding: 0.22em 0.26em; letter-spacing: 0.04em; }
+td { padding: 0.15em 0.3em; }
+td.pos { width: 1.74em; }
+.cup { width: 1.22em; height: 1.22em; }
+.bar { width: 2.61em; height: 0.48em; margin-right: 0.26em; }
+.bar i { background-size: 2.61em 100%; }
+.pc { min-width: 1.96em; }
+.sk { font-size: 0.74em; min-width: 1.3em; padding: 0.04em 0.22em; }
+td.nick, th.nick { max-width: 11.3em; }
+.foot { font-size: 1.3em; margin-top: 0.26em; }

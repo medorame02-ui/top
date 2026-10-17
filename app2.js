@@ -60,24 +60,26 @@
 	var box = document.getElementById('a');
 	box.innerHTML = html;
 
-	// подгоняем под размер окна игры (и по высоте, и по ширине), чтобы всё было видно без прокрутки
-	function fit() {
-		box.style.zoom = 1;
-		var haveH = window.innerHeight || document.documentElement.clientHeight;
-		var haveW = window.innerWidth || document.documentElement.clientWidth;
-		var needH = box.scrollHeight + 4;
-		var needW = box.scrollWidth + 4;
-		var z = 1;
-		if (haveH > 50 && needH > haveH) z = Math.min(z, haveH / needH);
-		if (haveW > 50 && needW > haveW) z = Math.min(z, haveW / needW);
-		if (z < 0.35) z = 0.35;
-		if (z < 1) box.style.zoom = z.toFixed(3);
+	// подгоняем под размер окна игры: подбираем размер шрифта (всё оформление в em),
+	// чтобы все строки влезали без прокрутки — работает и в старом браузере игры
+	function winH() {
+		return window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight || 480;
 	}
-	document.documentElement.style.overflow = 'hidden';
-	document.body.style.overflow = 'hidden';
-	// маленькое окно — компактный режим
-	var hh = window.innerHeight || document.documentElement.clientHeight;
-	if (hh && hh < 520) document.body.className += ' small';
+	function winW() {
+		return window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth || 640;
+	}
+	function fit() {
+		var h = winH(), w = winW();
+		var fs = Math.floor(h / 43);
+		if (fs > 16) fs = 16;
+		if (fs < 6) fs = 6;
+		document.body.style.fontSize = fs + 'px';
+		var guard = 0;
+		while (fs > 6 && guard++ < 12 && (box.offsetHeight + 6 > h || box.scrollWidth > w)) {
+			fs--;
+			document.body.style.fontSize = fs + 'px';
+		}
+	}
 	fit();
 	window.onresize = fit;
 	setTimeout(fit, 300);
